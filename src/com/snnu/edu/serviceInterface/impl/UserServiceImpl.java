@@ -40,5 +40,13 @@ public class UserServiceImpl implements UserService {
 	public List<Users> findWithPage() {
 		return (List<Users>) BaseDao.findWithPage("from Users ");
 	}
+	@Override
+	public boolean findIsExitUser(String name, String password) {
+		Users user =  (Users) BaseDao.getObject("from Users where name="+name+" and password ="+password+"");
+		if(user!=null){
+			return true;
+		}
+		return false;
+	}
 
 }
