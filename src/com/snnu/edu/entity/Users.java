@@ -101,5 +101,11 @@ public class Users {
 		this.birthday = birthday;
 		this.status = status;
 	}
+	public Users(String name, String password) {
+		super();
+		this.name = name;
+		this.password = password;
+	}
+	
 	
 }
