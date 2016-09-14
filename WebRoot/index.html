@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="icase">
+<head>
+	<meta charset="utf-8">
+	<title>ICASE</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="http://cdn.bootcss.com/angular.js/1.5.8/angular-route.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-controller="PageController">
+	<div ng-include="'template/header.html'"></div>
+	<div class="container" ng-view></div>
+</body>
+</html>

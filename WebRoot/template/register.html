@@ -1,0 +1,31 @@
+<div class="content">
+    <div class="center-block" style="width: 30%;">
+        <h4>Sign up to ICASE</h4>
+        <hr>
+        <div class="form-group">
+            <label for="account" style="font-size: larger;">Username</label>
+            <input ng-model="user.name" type="text" id="account" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="email" style="font-size: larger;">E-mail address</label>
+            <input ng-model="user.email" type="text" id="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="pwd" style="font-size: larger;">Tel</label>
+            <input ng-model="user.tel" type="text" id="tel" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="pwd" style="font-size: larger;">Password</label>
+            <input ng-model="user.password" type="password" id="pwd" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="repwd" style="font-size: larger;">Repeat Password</label>
+            <input ng-model="pwd_repeat" type="password" id="repwd" class="form-control">
+        </div>
+        <div class="center-block" style="width: 50%;">
+            <input type="checkbox">
+            <label>Agree the service</label>
+        </div>
+        <button ng-click="addUser()" class="btn btn-success" style="width: 100%; margin-top: 2rem;">Create an acount</button>
+    </div>
+</div>

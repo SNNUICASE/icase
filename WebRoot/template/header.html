@@ -1,0 +1,30 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">ICASE</a>
+        </div>
+
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/personal">Personal</a></li>
+                <li><a href="#/paper">Paper</a></li>
+                <li ng-if="user.user_type!=1&&loginStatus"><a href="#/review">Review</a></li>
+                <li><a href="#/help">Help</a></li>
+                <li><a href="#/about">About</a></li>
+            </ul>
+
+            <div ng-switch="loginStatus">
+                <ul id="header-nav-user" ng-switch-when="true" class="nav navbar-nav navbar-right header-nav-right">
+                    <li><a href="#/personal">{{user.email}}</a></li>
+                    <li><a href="#/home" ng-click="logout()">logout</a></li>
+                </ul>
+
+                <uL id="header-nav-login" ng-switch-when="false" class="nav navbar-nav navbar-right header-nav-right">
+                    <li><a href="#/login">Sign in</a></li>
+                    <li><a href="#/register">Sign up</a></li>
+                </uL>
+            </div>
+        </div>
+    </div>
+</div>
