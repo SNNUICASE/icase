@@ -1,0 +1,13 @@
+该项目是一个会议投稿审稿系统：
+1.com.snnu.edu.entity
+存放系统中涉及到的实体类
+2.com.snnu.edu.dao
+连接数据库的类
+3.com.snnu.edu.controller
+控制类
+4.com.snnu.edu.serviceInterface
+方法接口
+5.com.snnu.edu.serviceInterface.impl
+方法实现类
+6.som.snnu.edu.util
+常用工具类
