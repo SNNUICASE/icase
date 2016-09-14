@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-xs-6">
+		<h4>Paper List</h4>
+	</div>
+	<div class="col-xs-6">
+		<input type="text" class="form-control" style="width:80%; display:inline-block;">
+		<button class="btn btn-primary pull-right">search</button>
+	</div>
+</div>
+<hr>
+
+<ul id="paper-review-nav" class="nav nav-tabs" style="border-bottom: 1px solid #e0e0e0 !important; margin-bottom: 2rem;">
+	<li role="presentation" class="active">
+		<a href="#paper-review-list-all" role="tab" data-toggle="tab">All</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-review-list-submited" role="tab" data-toggle="tab">Submited</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-review-list-cancel" role="tab" data-toggle="tab">Cancel</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-review-list-accept" role="tab" data-toggle="tab">Accept</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-review-list-reject" role="tab" data-toggle="tab">Reject</a>
+	</li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="paper-review-list-all" ng-include="'template/review/all.html'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-review-list-submited" ng-include="'template/review/submit'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-review-list-cancel" ng-include="'template/review/cancel.html'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-review-list-accept" ng-include="'template/review/accept.html'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-review-list-reject" ng-include="'template/review/reject.html'"></div>
+</div>
+<script>
+    $('#paper-review-nav a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+</script>
+

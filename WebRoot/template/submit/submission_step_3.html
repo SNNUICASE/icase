@@ -1,0 +1,88 @@
+<div class="container-form">
+    <div class="center-block" style="width: 50em;">
+        <h4>Paper Information</h4>
+        <hr>
+        <div>
+            <div class="form-group">
+                <label for="paper-type" style="font-size: larger;">Paper type</label>
+                <select ng-model="paper.type" class="form-control">
+                    <option value="new">New</option>
+                    <option value="update">Update</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="title" style="font-size: larger;">Title</label>
+                <input ng-model="paper.title" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label style="font-size: larger;">File</label>
+                <input onchange="submitFile()" id="file" type="file" class="form-control">
+                <input id="fileName" type="hidden">
+                <div class="progress progress-striped active">
+                    <div id="progress" class="progress-bar" style="width: 0%;"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="keys" style="font-size: larger;">Key word</label>
+                <input ng-model="paper.keys" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="abstract" style="font-size: larger;">Abstract</label>
+                <textarea ng-model="paper.abstract" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="classification" style="font-size: larger;">Classification</label>
+                <input ng-model="paper.classification" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="remarks" style="font-size: larger;">Remarks</label>
+                <textarea ng-model="paper.remark" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<button ng-click="addPaper()" class="btn btn-success center-block" style="margin-top: 3rem;">
+    Save and next step&nbsp;&nbsp;
+    <i class="glyphicon glyphicon-arrow-right"></i>
+</button>
+<script>
+    var submitFile = function () {
+
+        function  updateProgress(event) {
+            if(event.lengthComputable){
+                var percentComplete = event.loaded/event.total*100;
+                $('#progress').css('width',percentComplete+'%');
+            }
+        }
+
+        window.xhr = new XMLHttpRequest();
+
+        xhr.upload.onprogress = updateProgress;
+        xhr.onreadystatechange = function(){
+            if (xhr.status == 200 ) {
+
+                //var text = JSON.parse(xhr.responseText);
+
+                var text = xhr.responseText;
+
+                if(text != ''){
+
+                    text = JSON.parse(text);
+
+                    if(text.code === 200){
+                        $('#fileName').val(text.content.filename);
+                    }
+                }
+            }
+        };
+
+        var data = new FormData();
+
+        var file = document.getElementById("file").files[0];
+        data.append("file",file);
+
+        xhr.open('post','tools/upload');
+        xhr.send(data);
+    };
+</script>

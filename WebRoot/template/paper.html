@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-xs-6">
+		<h4>Paper List</h4>
+	</div>
+	<div class="col-xs-6">
+		<a href="#/submission/1" class="btn btn-success pull-right">Add Paper</a>
+	</div>
+</div>
+<hr>
+
+<ul id="paper-nav" class="nav nav-tabs" style="border-bottom: 1px solid #e0e0e0 !important; margin-bottom: 2rem;">
+	<li role="presentation" class="active">
+		<a href="#paper-list-all" role="tab" data-toggle="tab">All</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-list-submited" role="tab" data-toggle="tab">Submited</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-list-cancel" role="tab" data-toggle="tab">Cancel</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-list-accept" role="tab" data-toggle="tab">Accept</a>
+	</li>
+	<li role="presentation">
+		<a href="#paper-list-reject" role="tab" data-toggle="tab">Reject</a>
+	</li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="paper-list-all" ng-include="'template/paper/all.html'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-list-submited" ng-include="'template/paper/submit'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-list-cancel" ng-include="'template/paper/cancel.html'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-list-accept" ng-include="'template/paper/accept.html'"></div>
+    <div role="tabpanel" class="tab-pane" id="paper-list-reject" ng-include="'template/paper/reject.html'"></div>
+</div>
+<script>
+    $('#paper-nav a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+</script>
+

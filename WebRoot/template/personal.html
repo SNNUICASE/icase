@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-xs-3">
+		<ul id="personal-nav" class="nav nav-pills nav-stacked" role="tablist">
+			<li class="active" role="presentation">
+				<a href="#information" role="tab" data-toggle="tab">Informaition</a>
+			</li>
+			<li role="presentation">
+				<a href="#message" role="tab" data-toggle="tab">Message</a>
+			</li>
+			<li role="presentation">
+				<a href="#paper-review" role="tab" data-toggle="tab">Paper Review</a>
+			</li>
+			<li role="presentation">
+				<a href="#system-setting" role="tab" data-toggle="tab">System Setting</a>
+			</li>
+		</ul>
+	</div>
+	<div class="col-xs-9">
+		<div class="tab-content">
+			<div id="information" class="tab-pane active" role="tabpanel" ng-include="'template/personal/information.html'"></div>
+			<div id="message" class="tab-pane" role="tabpanel" ng-include="'template/personal/message.html'"></div>
+		</div>
+	</div>
+</div>
+<script>
+    $('#personal-nav a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+</script>

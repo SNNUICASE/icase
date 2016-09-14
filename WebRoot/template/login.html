@@ -1,0 +1,22 @@
+<div class="content">
+    <div class="center-block" style="width: 30%;">
+        <h4 style="text-align: center; padding: 1.5rem;">Sign in to ICASE</h4>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="account" style="font-size: larger;">Username or email address</label>
+                    <input ng-model="user.name" type="text" id="account" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="pwd" style="font-size: larger;">Password</label>
+                    <input ng-model="user.password" type="password" id="pwd" class="form-control">
+                </div>
+                <button ng-click="login()" class="btn btn-success" style="width: 100%; margin-top: 2rem;">Sign in for ICASE</button>
+                <div class="text-center" style="margin-top: 1rem;">
+                    <a href="#">Forget password?</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

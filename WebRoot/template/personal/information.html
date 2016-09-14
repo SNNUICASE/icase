@@ -1,0 +1,28 @@
+<h2 style="margin-top:0;">Personal Information</h2>
+<hr>
+<div ng-init="getCurrentUser()">
+	<div class="row">
+		<div class="col-xs-6">
+		<h5>Name:</h5>{{user_current.name}}
+		</div>
+		<div class="col-xs-6">
+			<h5>Birthday:</h5>{{user_current.birthday}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<h5>E-mail:</h5>{{user_current.email}}
+		</div>
+		<div class="col-xs-6">
+			<h5>Tel:</h5>{{user_current.tel}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<h5>Country:</h5>{{user_current.country}}
+		</div>
+		<div class="col-xs-6">
+			<h5>Address:</h5>{{user_current.address}}
+		</div>
+	</div>
+</div>

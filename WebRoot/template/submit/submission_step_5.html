@@ -1,0 +1,38 @@
+<div class="content">
+    <div class="center-block" style="width: 50%;">
+        <h4>Paper Information</h4>
+        <hr>
+        <div>
+            <h5>Title:</h5>
+            {{submission.paper.title}}
+            <h5>Paper Type</h5>
+            {{submission.paper.type}}
+            <h5>Key word</h5>
+            {{submission.paper.keys}}
+            <h5>Abstract</h5>
+            {{submission.paper.abstract}}
+            <h5>Classification</h5>
+            {{submission.paper.classification}}
+            <h5>Remarks</h5>
+            {{submission.paper.remarks}}
+        </div>
+        
+
+        <div ng-repeat="author in submission.authors">
+            <h4>Author Information</h4>
+            <hr>
+            <h5>Name</h5>{{author.name}}
+            <h5>Address</h5>{{author.address}}
+            <h5>Country</h5>{{author.country}}
+            <h5>E-mail</h5>{{author.email}}
+            <h5>Tel</h5>{{author.tel}}
+            <h5>Gender</h5>{{author.gender}}
+        </div>
+
+        <div class="center-block" style="margin-top: 2rem; width: 53%;">
+            <button ng-click="updatePaperStatus(submission.paper.id, 300)" id="button-next" class="btn btn-success">
+                Submit Review
+            </button>
+        </div>
+    </div>
+</div>

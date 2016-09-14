@@ -1,0 +1,27 @@
+<div class="container-table">
+    <table ng-init="getCurrentUserPapers()" class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Paper Number</th>
+            <th>Title</th>
+            <th>Submit Time</th>
+            <th>Status</th>
+            <th>Opreation</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in paper_current_user" ng-if="item.status == -100">
+                <td>{{$index+1}}</td>
+                <td>{{item.paper_number}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.submit_time | date:"MM/dd/yyyy h:mma"}}</td>
+                <td>{{item.status | paperStatus}}</td>
+                <td>
+                    <button ng-show="item.status>0" ng-click="updatePaperStatus(item.id,-100)" class="btn btn-sm btn-success">Cancel</button>
+                    <a ng-show="item.status>0" target="_blank" href="files/{{item.file}}" class="btn btn-sm btn-primary">Download</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

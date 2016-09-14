@@ -1,0 +1,98 @@
+<div class="container-form">
+    <div class="center-block" style="width: 50em;">
+        <div style="margin-bottom: 5rem;" ng-repeat="author in authors">
+            <h4>Author Information</h4>
+            <hr>
+            <div id="form" class="author">
+                <div class="form-group">
+                    <label style="font-size: larger;">Name</label>
+                    <input ng-model="author.name" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: larger;">Address</label>
+                    <input ng-model="author.address" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label style="font-size: larger;">Country</label>
+                    <input ng-model="author.country" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label style="font-size: larger;">Tel</label>
+                    <input ng-model="author.tel" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label style="font-size: larger;">E-mail</label>
+                    <input ng-model="author.email" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label style="font-size: larger;">Gender</label>
+                    <select ng-model="author.gender" class="form-control">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top: 2rem;">
+                    <label style="font-size: larger;">Correspondence author</label>
+                    <div>
+                        <input ng-model="author.type" type="radio" name="correspondence">
+                        Yes
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-block" style="margin-top: 2rem; width: 53%;">
+            <button ng-click="pushAuthor()" id="button-add" class="btn btn-default">
+                Add author
+            </button>
+            <button ng-click="addAuthor()" id="button-next" class="btn btn-success">
+                next step&nbsp;&nbsp;
+                <i class="glyphicon glyphicon-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+
+//    $("#button-add").on("click",this,function () {
+//        $("#author-container").append(
+//                "<div class='author'>"
+//                +"<h4 style='margin-top: 2rem;'>Other author</h4>"
+//                +"<hr>"
+//                +$("#form").html()
+//                +"</div>");
+//    });
+
+    /*
+
+    $("#button-next").on("click",this,function () {
+
+        $(".author").each(function () {
+            var that = $(this);
+            var name = that.find(".author-name").val();
+            var address = that.find(".author-address").val();
+            var country = that.find(".author-country").val();
+            var email = that.find(".author-email").val();
+            var tel = that.find(".author-tel").val();
+            var gender = that.find(".author-gender").val();
+            var correspondence = that.find(".author-correspondence").attr('checked');
+            var paperId = location.href.split("?")[1].split("=")[1];
+
+            $.post('author/add',{
+                name:name,
+                type:correspondence,
+                address:address,
+                country:country,
+                tel:tel,
+                email:email,
+                paper_id:paperId
+            },function (data) {
+                if(data.status === 200){
+                    location.href = "submission_step_5.html?paper_id="+paperId;
+                }
+            })
+
+        });
+    });
+    */
+</script>
