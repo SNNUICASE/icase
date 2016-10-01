@@ -31,11 +31,11 @@ public class AuthorServiceImpl implements AuthorService {
 		return false;
 	}
 
-	public Authors getAuthorById(int id) {
+	public Authors getAuthorById(Integer id) {
 		return (Authors) BaseDao.getObject("from Authors where id = '"+ id +"'");
 	}
 
-	public List<Authors> getAuthorByPaperId(int paper_id) {
+	public List<Authors> getAuthorByPaperId(Integer paper_id) {
 		return (List<Authors>) BaseDao.getObject("from Authors where paper_id = '"+ paper_id +"'");
 	}
 	public List<Authors> getAllAuthor() {

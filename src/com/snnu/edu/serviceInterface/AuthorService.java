@@ -10,9 +10,9 @@ public interface AuthorService {
 	//通过id删除该作者信息
 	public  boolean delAuthorInfo(Authors author);
 	//通过id查询该作者
-	public  Authors getAuthorById(int id);
+	public  Authors getAuthorById(Integer id);
 	//通过论文id查询作者
-	public List<Authors> getAuthorByPaperId(int paper_id);
+	public List<Authors> getAuthorByPaperId(Integer paper_id);
 	//查询所有作者信息
 	public List<Authors> getAllAuthor();
 }

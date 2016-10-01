@@ -11,22 +11,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Papers {
-	private int id;
+	private Integer id;
 	private String paper_number;
-	private int type;
+	private Integer type = 0;
 	private String title;
 	private String paper_abstract;
 	private Date submit_time;
-	private int classification;
-	private int status;
+	private Integer classification = 0;
+	private Integer status = 100;
 	private Users user;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getpaper_number() {
@@ -35,10 +35,10 @@ public class Papers {
 	public void setpaper_number(String paper_number) {
 		this.paper_number = paper_number;
 	}
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	public String getTitle() {
@@ -60,16 +60,16 @@ public class Papers {
 	public void setSubmit_time(Date submit_time) {
 		this.submit_time = submit_time;
 	}
-	public int getClassification() {
+	public Integer getClassification() {
 		return classification;
 	}
-	public void setClassification(int classification) {
+	public void setClassification(Integer classification) {
 		this.classification = classification;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	@ManyToOne
@@ -83,9 +83,9 @@ public class Papers {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Papers(String paper_number, int type, String title,
-			String paper_abstract, Date submit_time, int classification,
-			int status) {
+	public Papers(String paper_number, Integer type, String title,
+			String paper_abstract, Date submit_time, Integer classification,
+			Integer status) {
 		super();
 		this.paper_number = paper_number;
 		this.type = type;

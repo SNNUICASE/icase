@@ -9,22 +9,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Authors {
-	private int id;
+	private Integer id;
 	private String name;
 	private String address;
 	private String country;
 	private String email;
 	private String tel;
-	private int type;
-	private int authors_order;
+	private Integer type = 0;
+	private Integer authors_order = 0;
 	private Papers paper;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -57,17 +57,17 @@ public class Authors {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	@Column(name="_order")
-	public int getAuthors_order() {
+	public Integer getAuthors_order() {
 		return authors_order;
 	}
-	public void setAuthors_order(int authors_order) {
+	public void setAuthors_order(Integer authors_order) {
 		this.authors_order = authors_order;
 	}
 	@ManyToOne
@@ -82,7 +82,7 @@ public class Authors {
 		// TODO Auto-generated constructor stub
 	}
 	public Authors(String name, String address, String country, String email,
-			String tel, int type, int authors_order) {
+			String tel, Integer type, Integer authors_order) {
 		super();
 		this.name = name;
 		this.address = address;

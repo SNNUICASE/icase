@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 			BaseDao.saveOrUpdateObj(user);
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();			
 		}
 		return false;
 	}
@@ -29,11 +29,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Users> getUserByType(int type) {
-		return (List<Users>) BaseDao.getObject("from Users where id='"+type+"'");
+	public List<Users> getUserByType(Integer type) {
+		return (List<Users>) BaseDao.getObject("from Users where type='"+type+"'");
 	} 
 
-	public Users getUserById(int id) {
+	public Users getUserById(Integer id) {
 		return (Users) BaseDao.getObject("from Users where id='" + id + "'");
 	}
 
@@ -47,6 +47,10 @@ public class UserServiceImpl implements UserService {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public Users getUserBynameAndpassword(String name, String password) {
+		return (Users) BaseDao.getObject("from Users where name="+name+" and password = "+password+"");
 	}
 
 }

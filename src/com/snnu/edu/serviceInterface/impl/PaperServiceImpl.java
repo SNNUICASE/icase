@@ -30,11 +30,11 @@ public class PaperServiceImpl implements PaperService {
 		return false;
 	}
 
-	public Papers getPaperById(int id) {
+	public Papers getPaperById(Integer id) {
 		return (Papers) BaseDao.getObject("from Papers where id = '" + id +"'");
 	}
 
-	public List<Papers> getPaperByUserId(int user_id) {
+	public List<Papers> getPaperByUserId(Integer user_id) {
 		return (List<Papers>) BaseDao.getObject("from Papers where user_id = '"+ user_id +"'");
 	}
 	

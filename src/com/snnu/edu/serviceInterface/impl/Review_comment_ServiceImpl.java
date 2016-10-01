@@ -34,7 +34,7 @@ public class Review_comment_ServiceImpl implements Review_comment_Service {
 	}
 
 	@Override
-	public Review_Comment getCommentById(int id) {
+	public Review_Comment getCommentById(Integer id) {
 		return (Review_Comment)BaseDao.getObject("from Review_Comment where id='"+id+"'");
 	} 
 
