@@ -11,23 +11,23 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Users {
-	private int id;
+	private Integer id;
 	private String name;
 	private String password;
 	private String tel;
 	private String email;
 	private String country;
 	private String address;
-	private int type;
+	private Integer type = 0;
 	private Date birthday;
-	private int status;
+	private Integer status = 0;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -66,10 +66,10 @@ public class Users {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(int type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	@Temporal(TemporalType.DATE)
@@ -79,18 +79,17 @@ public class Users {
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
 	}
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public Users() {
-		super();
+		
 	}
 	public Users(String name, String password, String tel, String email,
-			String country, String address, int type, Date birthday, int status) {
-		super();
+			String country, String address, Integer type, Date birthday, Integer status) {	
 		this.name = name;
 		this.password = password;
 		this.tel = tel;
@@ -101,10 +100,23 @@ public class Users {
 		this.birthday = birthday;
 		this.status = status;
 	}
-	public Users(String name, String password) {
-		super();
+	public Users(String name, String password) {		
 		this.name = name;
 		this.password = password;
+	}
+	public Users(String name, String password, String tel, String address) {
+		this.name = name;
+		this.password = password;
+		this.tel = tel;
+		this.address = address;
+	}
+	public Users(String name, String password, String tel, String address,
+			Integer status) {	
+		this.name = name;
+		this.password = password;
+		this.tel = tel;
+		this.address = address;
+		this.status = status;
 	}
 	
 	

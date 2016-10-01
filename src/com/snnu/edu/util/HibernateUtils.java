@@ -2,6 +2,7 @@ package com.snnu.edu.util;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtils {
@@ -9,7 +10,7 @@ public class HibernateUtils {
 	private static SessionFactory factory=null;
 	static{
 		try {
-			Configuration cfg=new Configuration().configure();
+			Configuration cfg=new AnnotationConfiguration().configure();
 			factory=cfg.buildSessionFactory();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Review_Comment {
-	private int id;
+	private Integer id;
 	private String content;
 	private Date create_time;
 	private Date submit_time;
@@ -19,10 +19,10 @@ public class Review_Comment {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getContent() {

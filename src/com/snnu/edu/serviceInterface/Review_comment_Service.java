@@ -11,7 +11,7 @@ public interface Review_comment_Service {
 	
 	public  boolean delComment(Review_Comment review_comment);
 	
-	public  Review_Comment getCommentById(int id);
+	public  Review_Comment getCommentById(Integer id);
 	
 	public  List<Review_Comment>findWithPage();
 }

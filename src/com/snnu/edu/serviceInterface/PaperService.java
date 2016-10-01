@@ -10,9 +10,9 @@ public interface PaperService {
 	//通过id删除该论文信息
 	public  boolean delPaperInfo(Papers paper);
 	//通过id查询该论文
-	public  Papers getPaperById(int id);
+	public  Papers getPaperById(Integer id);
 	//通过用户id查询论文
-	public List<Papers> getPaperByUserId(int user_id);
+	public List<Papers> getPaperByUserId(Integer user_id);
 	//查询所有论文信息
 	public List<Papers> getAllPaper();
 }
