@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<Users> getUserByType(Integer type) {
-		return (List<Users>) BaseDao.getObject("from Users where type='"+type+"'");
+		return (List<Users>) BaseDao.findWithPage("from Users where type='"+type+"'");
 	} 
 
 	public Users getUserById(Integer id) {

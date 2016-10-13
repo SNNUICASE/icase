@@ -35,10 +35,19 @@ public class PaperServiceImpl implements PaperService {
 	}
 
 	public List<Papers> getPaperByUserId(Integer user_id) {
-		return (List<Papers>) BaseDao.getObject("from Papers where user_id = '"+ user_id +"'");
+		return (List<Papers>) BaseDao.findWithPage("from Papers where user_id = '"+ user_id +"'");
 	}
 	
 	public List<Papers> getAllPaper() {
-		return (List<Papers>) BaseDao.getObject("from Papers");
+		return (List<Papers>) BaseDao.findWithPage("from Papers");
+	}
+
+	public Papers getPaperByNumber(String paper_number) {
+		return (Papers) BaseDao.getObject("from Papers where paper_number = " + paper_number +"");
+	}
+
+	@Override
+	public List<Papers> getPaperByStatus(Integer status) {
+		return (List<Papers>) BaseDao.findWithPage("from Papers where status = '"+ status +"'");
 	}
 }

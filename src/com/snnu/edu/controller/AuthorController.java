@@ -42,10 +42,10 @@ public class AuthorController {
 		return Tools.getJson(map);
 	}
 	
-	@RequestMapping("list_paper")//通过文章查询作者
+	@RequestMapping("list_paper")
 	@ResponseBody
-	public String getPaperAuthor(Integer paper_id) {
-		
+	//通过文章查询作者
+	public String getPaperAuthor(Integer paper_id) {		
 		List<Authors> list = authorservice.getAuthorByPaperId(paper_id);
 		Map map = new HashMap();
 		if(list!=null) {
@@ -53,7 +53,7 @@ public class AuthorController {
 			map.put("code", 200);
 			map.put("msg", "OK");
 		}else {
-			map.put("code", "400");
+			map.put("code", 400);
 			map.put("msg", "Resource is not found not exist");
 		}
 		return Tools.getJson(map);
@@ -70,7 +70,7 @@ public class AuthorController {
 			map.put("code", 200);
 			map.put("msg", "OK");
 		}else {
-			map.put("code", "400");
+			map.put("code", 400);
 			map.put("msg", "Resource is not found not exist");
 		}
 		return Tools.getJson(map);

@@ -36,10 +36,10 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	public List<Authors> getAuthorByPaperId(Integer paper_id) {
-		return (List<Authors>) BaseDao.getObject("from Authors where paper_id = '"+ paper_id +"'");
+		return (List<Authors>) BaseDao.findWithPage("from Authors where paper_id = '"+ paper_id +"'");
 	}
 	public List<Authors> getAllAuthor() {
-		return (List<Authors>) BaseDao.getObject("from Authors");
+		return (List<Authors>) BaseDao.findWithPage("from Authors");
 	}
 	
 

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -19,8 +19,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
   </head>
+ <script type="text/javascript" src="js/jquery.js"></script>  
+<script type="text/javascript" src="js/functions.js"></script>  
   
-  <body>
-    This is my JSP page. <br>
-  </body>
+  
+<title>测试页面</title>  
+<script type="text/javascript">  
+$(function(){         
+    $('#kaptchaImage').click(function () {//生成验证码  
+     $(this).hide().attr('src', './kaptcha/getKaptchaImage.do?' + Math.floor(Math.random()*100) ).fadeIn();  
+     event.cancelBubble=true;  
+    });  
+});   
+  
+  
+window.onbeforeunload = function(){  
+    //关闭窗口时自动退出  
+    if(event.clientX>360&&event.clientY<0||event.altKey){     
+        alert(parent.document.location);  
+    }  
+};  
+  
+  
+function changeCode() {  
+    $('#kaptchaImage').hide().attr('src', './kaptcha/getKaptchaImage.do?' + Math.floor(Math.random()*100) ).fadeIn();  
+    event.cancelBubble=true;  
+}  
+</script>  
+</head>  
+<body>  
+          
+<div class="chknumber">  
+      <label>验证码:  
+      <input name="kaptcha" type="text" id="kaptcha" maxlength="4" class="chknumber_input" />               
+      </label>  
+      <br />  
+      <img src="./kaptcha/getKaptchaImage.do" id="kaptchaImage"  style="margin-bottom: -3px"/>  
+      <a href="#" onclick="changeCode()">看不清?换一张</a>  
+</div>  
+</body>  
 </html>
