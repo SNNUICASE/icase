@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Review_Comment {
 	private Integer id;
+	private String comment_number;
 	private String content;
 	private Date create_time;
 	private Date submit_time;
@@ -24,6 +25,13 @@ public class Review_Comment {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getComment_number() {
+		return comment_number;
+	}
+	public void setComment_number(String comment_number) {
+		this.comment_number = comment_number;
 	}
 	public String getContent() {
 		return content;

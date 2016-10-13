@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.code.kaptcha.Constants;
 import com.snnu.edu.entity.Users;
 import com.snnu.edu.serviceInterface.UserService;
 import com.snnu.edu.serviceInterface.impl.UserServiceImpl;
@@ -24,18 +25,20 @@ public class UserController {
 	// 用户登录
 	@RequestMapping("login")
 	@ResponseBody
-	public String login(String name, String password,String validateCode, HttpSession session)
-			throws Exception {
-		boolean flag = us.findIsExitUser(name, password);
+	public String login(String name, String password, String validateCode,
+			HttpSession session) throws Exception {
+		// 这里是验证用户名密码格式
+		Users current_user = us.getUserBynameAndpassword(name, password);
 		HashMap hashmap = new HashMap();
-		if (flag) {
-			Users current_user = us.getUserBynameAndpassword(name, password);
-			if (current_user != null) {
-				session.setAttribute("current_user", current_user);
-				hashmap.put("content", current_user);
-				hashmap.put("code", 200);
-				hashmap.put("msg", "OK");
-			}
+		if (current_user != null) {
+			// if ( session.getAttribute("Constants.KAPTCHA_SESSION_KEY") ==
+			// validateCode) {
+			session.setAttribute("current_user", current_user);
+			current_user.setPassword("");
+			hashmap.put("content", current_user);
+			hashmap.put("code", 200);
+			hashmap.put("msg", "OK");
+			// }
 		} else {
 			hashmap.put("content", "");
 			hashmap.put("code", 400);
@@ -65,10 +68,11 @@ public class UserController {
 	// 用户登陆状态的查询
 	@RequestMapping("login_status")
 	@ResponseBody
-	public String findStatus(HttpSession session) {
+	public String findStatus(HttpSession session) throws Exception {
 		Users user = (Users) session.getAttribute("current_user");
 		HashMap hashmap = new HashMap();
 		if (user != null) {
+			user.setPassword("");
 			hashmap.put("loginStatus", true);
 			hashmap.put("user", user);
 			hashmap.put("code", 200);
@@ -84,7 +88,8 @@ public class UserController {
 	// 用户注册
 	@RequestMapping("add")
 	@ResponseBody
-	public String add(Users user) {
+	public String add(Users user) throws Exception {
+		// 验证用户名密码格式
 		boolean flag = us.saveOrUpdateUsers(user);
 		HashMap hashmap = new HashMap();
 		if (flag) {
@@ -102,10 +107,20 @@ public class UserController {
 	// 查询当前用户的所有信息
 	@RequestMapping("information")
 	@ResponseBody
-	public String findInformation(Integer id,HttpSession session) {
-		Users user = (Users) session.getAttribute("current_user");
+	public String findInformation(Integer id, HttpSession session)
+			throws Exception {
+		Users user = null;
+		if (id != null) {
+			Users tem_user = us.getUserById(id);
+			if (tem_user != null) {
+				user = tem_user;
+			}
+		} else {
+			user = (Users) session.getAttribute("current_user");
+		}
 		HashMap hashmap = new HashMap();
 		if (user != null) {
+			user.setPassword("");
 			hashmap.put("content", user);
 			hashmap.put("code", 200);
 			hashmap.put("msg", "OK");
@@ -119,7 +134,7 @@ public class UserController {
 	// 查询所有用户信息
 	@RequestMapping("list_all")
 	@ResponseBody
-	public String findAll() {
+	public String findAll() throws Exception {
 		List<Users> users = us.findWithPage();
 		HashMap hashmap = new HashMap();
 		if (users.size() != 0) {
@@ -137,11 +152,11 @@ public class UserController {
 	// 查询各类型用户的信息
 	@RequestMapping("list_by_type")
 	@ResponseBody
-	public String findSomeByType(Integer type) {
+	public String findSomeByType(Integer type) throws Exception {
 		List<Users> users = us.getUserByType(type);
 		HashMap hashmap = new HashMap();
 		if (users.size() != 0) {
-			hashmap.put("status", users);
+			hashmap.put("content", users);
 			hashmap.put("code", 200);
 			hashmap.put("msg", "OK");
 		} else {
@@ -154,7 +169,7 @@ public class UserController {
 	// 删除用户
 	@RequestMapping("delete")
 	@ResponseBody
-	public String delete(Integer id) {
+	public String delete(Integer id) throws Exception {
 		HashMap hashmap = new HashMap();
 		Users user = us.getUserById(id);
 		if (user != null) {
@@ -177,7 +192,7 @@ public class UserController {
 	// 更新用户信息
 	@RequestMapping("update")
 	@ResponseBody
-	public String update(Users user) {
+	public String update(Users user) throws Exception {
 		HashMap hashmap = new HashMap();
 		boolean flag = us.saveOrUpdateUsers(user);
 		if (flag) {

@@ -1,42 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<beans  
-    xmlns="http://www.springframework.org/schema/beans"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-    xmlns:tx="http://www.springframework.org/schema/tx"  
-    xmlns:context="http://www.springframework.org/schema/context"    
-    xmlns:mvc="http://www.springframework.org/schema/mvc"    
-    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
     http://www.springframework.org/schema/tx   
     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
     http://www.springframework.org/schema/context  
     http://www.springframework.org/schema/context/spring-context-3.0.xsd  
     http://www.springframework.org/schema/mvc  
-    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">  
-  
-  
-    <!-- 自动扫描的包名 -->  
-    <context:component-scan base-package="com.snnu.edu.controller" ></context:component-scan>  
-     
-    <!-- 默认的注解映射的支持 -->  
-    <mvc:annotation-driven />  
-      
-    <!-- 视图解释类 -->  
-     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
-        <property name="prefix" value="/"/>  
-        <property name="suffix" value=".html"/><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑  -->  
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />  
-    </bean>  
-    
-    <!--   文件上传解析器配置以及大小编码等参数     -->  
-     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
-      <property name="defaultEncoding" value="utf-8" />  
-      <property name="maxUploadSize" value="10485760000" />  
-      <property name="maxInMemorySize" value="40960" />  
-     </bean>     
-     
-    <!-- 对静态资源文件的访问   -->  
-     <mvc:default-servlet-handler/> 
-      
-  
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+
+	<!-- 自动扫描的包名 -->
+	<context:component-scan base-package="com.snnu.edu.controller"></context:component-scan>
+
+	<!-- 默认的注解映射的支持 -->
+	<mvc:annotation-driven />
+
+	<!-- 视图解释类 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".html" /><!--可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+
+	<!-- 文件上传解析器配置以及大小编码等参数 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="maxUploadSize" value="10485760000" />
+		<property name="maxInMemorySize" value="40960" />
+	</bean>
+
+	<!-- 对静态资源文件的访问 -->
+	<mvc:default-servlet-handler />
+	<!-- 验证码设置 -->
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">  
+        <property name="config">  
+            <bean class="com.google.code.kaptcha.util.Config">  
+                <constructor-arg>  
+                    <props>  
+                        <prop key="kaptcha.border">yes</prop>  
+                        <prop key="kaptcha.border.color">105,179,90</prop>  
+                        <prop key="kaptcha.textproducer.font.color">blue</prop>  
+                        <prop key="kaptcha.image.width">125</prop>  
+                        <prop key="kaptcha.image.height">45</prop>  
+                        <prop key="kaptcha.textproducer.font.size">45</prop>  
+                        <prop key="kaptcha.session.key">code</prop>  
+                        <prop key="kaptcha.textproducer.char.length">4</prop>  
+                        <prop key="kaptcha.textproducer.font.names">宋体,楷体,微软雅黑</prop>  
+                    </props>  
+                </constructor-arg>  
+            </bean>  
+        </property>  
+    </bean>
 </beans>  
