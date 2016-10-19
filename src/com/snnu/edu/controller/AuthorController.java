@@ -46,10 +46,10 @@ public class AuthorController {
 	@ResponseBody
 	//通过文章查询作者
 	public String getPaperAuthor(Integer paper_id) {		
-		List<Authors> list = authorservice.getAuthorByPaperId(paper_id);
+		List<Authors> authors = authorservice.getAuthorByPaperId(paper_id);
 		Map map = new HashMap();
-		if(list!=null) {
-			map.put("authors", list);
+		if(authors.size() >= 0) {
+			map.put("authors", authors);
 			map.put("code", 200);
 			map.put("msg", "OK");
 		}else {
@@ -63,10 +63,10 @@ public class AuthorController {
 	@ResponseBody
 	public String getAllAuthor() {
 		AuthorService authorservice = new AuthorServiceImpl();
-		List<Authors> list = authorservice.getAllAuthor();
+		List<Authors> authors = authorservice.getAllAuthor();
 		Map map = new HashMap();
-		if(list!=null) {
-			map.put("authors", list);
+		if(authors.size() >= 0) {
+			map.put("authors", authors);
 			map.put("code", 200);
 			map.put("msg", "OK");
 		}else {
