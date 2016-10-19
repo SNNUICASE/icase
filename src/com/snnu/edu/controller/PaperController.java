@@ -1,6 +1,5 @@
 package com.snnu.edu.controller;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
+import com.snnu.edu.entity.Authors;
 import com.snnu.edu.entity.Papers;
 import com.snnu.edu.entity.Users;
 import com.snnu.edu.serviceInterface.PaperService;
@@ -31,13 +30,7 @@ public class PaperController {
 
 	@RequestMapping("add")
 	@ResponseBody
-	public String add(Papers paper,String title, HttpSession session) {
-		System.out.println("要保存的文章信息：======"+title);
-		System.out.println("要保存的文章信息："+paper.getTitle()+"======"+title);
-		Users user = (Users) session.getAttribute("current_user");
-		if(user != null){
-			paper.setUser(user);
-		}	
+	public String add(Papers paper) {
 		String paper_number = Tools.getPaper_number();
 		Date submit_time = Tools.getTime();
 		paper.setpaper_number(paper_number);
@@ -92,8 +85,8 @@ public class PaperController {
 			papers = paperservice.getPaperByUserId(userId);
 		} else {
 			Users user = (Users) session.getAttribute("current_user");
-			System.out.println("session中用户：" + user.getId());
-			papers = paperservice.getPaperByUserId(user.getId());
+		//	System.out.println("session中用户：" + user.getId());
+		//	papers = paperservice.getPaperByUserId(user.getId());
 		}
 		System.out.println("list论文集合：" + papers);
 		Map map = new HashMap();
@@ -125,7 +118,7 @@ public class PaperController {
 		}
 		return Tools.getJson(map);
 	}
-
+//更改文章的状态
 	@RequestMapping("update_paper_status")
 	@ResponseBody
 	public String updatePaper(Integer paperId, Integer status) {

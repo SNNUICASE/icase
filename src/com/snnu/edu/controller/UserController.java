@@ -74,11 +74,12 @@ public class UserController {
 		if (user != null) {
 			user.setPassword("");
 			hashmap.put("loginStatus", true);
-			hashmap.put("user", user);
+			hashmap.put("content", user);
 			hashmap.put("code", 200);
 			hashmap.put("msg", "OK");
 		} else {
 			hashmap.put("loginStatus", false);
+			hashmap.put("content", "");
 			hashmap.put("code", 200);
 			hashmap.put("msg", "not login");
 		}
